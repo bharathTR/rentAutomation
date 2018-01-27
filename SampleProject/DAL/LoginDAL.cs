@@ -22,31 +22,34 @@ namespace SampleProject.DAL
             string[] res = new string[10];
             //SqlConnection objcon = new SqlConnection();
             //objcon.ConnectionString = ConfigurationManager.ConnectionStrings["ConnString"].ToString();
-            //SqlCommand cmd;
             //objcon.Open();
-            //cmd = new SqlCommand("CheckUSerExistence", objcon);
-            //cmd.CommandType = CommandType.StoredProcedure;
-            //cmd.Parameters.Add("@User", user);
-            //cmd.Parameters.Add("@pass", pass);
-
-            //SqlDataAdapter sd = new SqlDataAdapter(cmd);
-            //DataTable DS = new DataTable();
-            //sd.Fill(DS);
-
-            GlobalConnection conn = new GlobalConnection();
-            OracleCommand cmd = new OracleCommand();
-            cmd.Connection = conn.getConnection();
-            cmd.CommandText = "CheckUSerExistence";
+            SqlCommand cmd;
+            
+            
+            SqlConnection con = GlobalConnection.getConnection();
+            cmd = new SqlCommand("CheckUSerExistence", con);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Transaction = null;
-            cmd.Parameters.Add("User", OracleDbType.Varchar2).Value = user;
-            cmd.Parameters.Add("pass", OracleDbType.Varchar2).Value = pass;
-            cmd.Parameters.Add("p_resultset", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
-            OracleDataAdapter da = new OracleDataAdapter(cmd);
-            DataSet DS = new DataSet();
-            da.Fill(DS);
-           // conn.Close();
-            foreach (DataRow dR in DS.Tables[0].Rows)
+            cmd.Parameters.Add("@User", user);
+            cmd.Parameters.Add("@pass", pass);
+
+            SqlDataAdapter sd = new SqlDataAdapter(cmd);
+            DataTable DS = new DataTable();
+            sd.Fill(DS);
+
+            //GlobalConnection conn = new GlobalConnection();
+            //OracleCommand cmd = new OracleCommand();
+            //cmd.Connection = conn.getConnection();
+            //cmd.CommandText = "CheckUSerExistence";
+            //cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.Transaction = null;
+            //cmd.Parameters.Add("User", OracleDbType.Varchar2).Value = user;
+            //cmd.Parameters.Add("pass", OracleDbType.Varchar2).Value = pass;
+            //cmd.Parameters.Add("p_resultset", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+            //OracleDataAdapter da = new OracleDataAdapter(cmd);
+            //DataSet DS = new DataSet();
+            //da.Fill(DS);
+            // conn.Close();
+            foreach (DataRow dR in DS.Rows)
             {
 
                 userName = Convert.ToString(dR["userName"]);
@@ -68,13 +71,13 @@ namespace SampleProject.DAL
         internal string[] Register(LoginModel regLog)
         {
             string[] status = new string[10];
-            //SqlConnection objcon = new SqlConnection();
-            //objcon.ConnectionString = ConfigurationManager.ConnectionStrings["ConnString"].ToString();
-            //SqlCommand cmd;
-            //objcon.Open();
-            GlobalConnection conn = new GlobalConnection();
-            OracleCommand cmd = new OracleCommand();
-            cmd.Connection = conn.getConnection();
+            SqlConnection objcon = new SqlConnection();
+            objcon.ConnectionString = ConfigurationManager.ConnectionStrings["ConnString"].ToString();
+            SqlCommand cmd=null;
+            objcon.Open();
+            //GlobalConnection conn = new GlobalConnection();
+            //OracleCommand cmd = new OracleCommand();
+            //cmd.Connection = conn.getConnection();
             status = Check(regLog.userName, regLog.password);
             if (status[0] == "1")
             {

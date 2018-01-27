@@ -19,33 +19,64 @@ namespace SampleProject.DAL
             List<CustomerModel> regdetails = new List<CustomerModel>();
             //SqlConnection objcon = new SqlConnection();
             //objcon.ConnectionString = ConfigurationManager.ConnectionStrings["ConnString"].ToString();
-            //SqlCommand cmd;
+
             //objcon.Open();
-            //cmd = new SqlCommand("FetchStudentRecordsDesc", objcon);
-            //cmd.CommandType = CommandType.StoredProcedure;
-            //cmd.Parameters.AddWithValue("@p_id", 0);
-            //SqlDataAdapter sd = new SqlDataAdapter(cmd);
-            GlobalConnection conn = new GlobalConnection();
-            OracleCommand cmd = new OracleCommand();
-            cmd.Connection = conn.getConnection();
-            cmd.CommandText = "FetchCustomerRecords";
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Transaction = null;
-            cmd.Parameters.Add("p_id", OracleDbType.Int64).Value = 0;
-            cmd.Parameters.Add("p_resultset", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+            SqlCommand cmd;
+            SqlConnection con = GlobalConnection.getConnection();
             DataTable Dt = new DataTable();
-            OracleDataAdapter da = new OracleDataAdapter(cmd);
-            da.Fill(Dt);
+            cmd = new SqlCommand("[CustomerRecordsDesc]", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@p_id", 0);
+            cmd.Parameters.AddWithValue("@first_name", "");
+            cmd.Parameters.AddWithValue("@last_name", "");
+            cmd.Parameters.AddWithValue("@city", "");
+            cmd.Parameters.AddWithValue("@country", "");
+            cmd.Parameters.AddWithValue("@phone", "");
+            cmd.Parameters.AddWithValue("@H_id", 0);
+            cmd.Parameters.AddWithValue("@middle_name", "");
+            cmd.Parameters.AddWithValue("@mobileno", "");
+            cmd.Parameters.AddWithValue("@address", "");
+            cmd.Parameters.AddWithValue("@username", "");
+            cmd.Parameters.AddWithValue("@password", "");
+            cmd.Parameters.AddWithValue("@lastlogindate", "");
+            cmd.Parameters.AddWithValue("@state", "");
+            cmd.Parameters.AddWithValue("@action", "");
+            SqlDataAdapter sd = new SqlDataAdapter(cmd);
+            sd.Fill(Dt);
+
+            //GlobalConnection conn = new GlobalConnection();
+            //OracleCommand cmd = new OracleCommand();
+            //cmd.Connection = conn.getConnection();
+            //cmd.CommandText = "FetchCustomerRecords";
+            //cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.Transaction = null;
+            //cmd.Parameters.Add("p_id", OracleDbType.Int64).Value = 0;
+            //cmd.Parameters.Add("p_resultset", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+            //DataTable Dt = new DataTable();
+            //OracleDataAdapter da = new OracleDataAdapter(cmd);
+            //da.Fill(Dt);
 
             foreach (DataRow dR in Dt.Rows)
             {
                 regdetails.Add(new CustomerModel
                 {
-                    id = Convert.ToInt32(dR["Id"]),
-                    firstName = Convert.ToString(dR["firstname"]),
-                    lastName = Convert.ToString(dR["lastname"]),
-                    phoneNO = Convert.ToInt32(dR["phone"])
-
+                    id = Convert.ToInt32(dR["LOGINID"]),
+                    firstName = Convert.ToString(dR["FIRSTNAME"]),
+                    lastName = Convert.ToString(dR["LASTNAME"]),
+                    phoneNO = Convert.ToString(dR["phone"]),
+                    country = Convert.ToString(dR["COUNTRY"]),
+                    h_id = Convert.ToInt32(dR["h_id"]),
+                    middleName = Convert.ToString(dR["MIDDLENAME"]),
+                    mobileNo = Convert.ToString(dR["MOBILENO"]),
+                    address = Convert.ToString(dR["country"]),
+                    userName = Convert.ToString(dR["USERNAME"]),
+                    password = Convert.ToString(dR["country"]),
+                    lastLoginDate = Convert.ToString(dR["LASTLOGGEDDATE"]),
+                    state = Convert.ToString(dR["STATE"]),
+                    city = Convert.ToString(dR["CITY"]),
+                    houseNo = Convert.ToString(dR["H_NUMBER"]),
+                    blockNo=Convert.ToString(dR["H_BLOCK"]),
+                    floorNo= Convert.ToString(dR["H_FLOOR_NO"]),
                 });
 
             }
@@ -65,16 +96,17 @@ namespace SampleProject.DAL
             //cmd.Parameters.AddWithValue("p_id", id);
             //SqlDataAdapter sd = new SqlDataAdapter(cmd);
             //DataTable Dt = new DataTable();
-            GlobalConnection conn = new GlobalConnection();
-            OracleCommand cmd = new OracleCommand();
-            cmd.Connection = conn.getConnection();
-            cmd.CommandText = "FetchCustomerRecords";
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Transaction = null;
-            cmd.Parameters.Add("p_id", OracleDbType.Int64).Value = id;
-            cmd.Parameters.Add("p_resultset", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
-            OracleDataAdapter da = new OracleDataAdapter(cmd);
-            da.Fill(Dt);
+
+            //GlobalConnection conn = new GlobalConnection();
+            //OracleCommand cmd = new OracleCommand();
+            //cmd.Connection = conn.getConnection();
+            //cmd.CommandText = "FetchCustomerRecords";
+            //cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.Transaction = null;
+            //cmd.Parameters.Add("p_id", OracleDbType.Int64).Value = id;
+            //cmd.Parameters.Add("p_resultset", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+            //OracleDataAdapter da = new OracleDataAdapter(cmd);
+            //da.Fill(Dt);
             return Dt;
         }
 
@@ -91,14 +123,15 @@ namespace SampleProject.DAL
             //cmd.Parameters.AddWithValue("@p_Action", "D");
             //res[0] = cmd.ExecuteNonQuery().ToString();
             //res[0] = "Deleted";
-            GlobalConnection conn = new GlobalConnection();
-            OracleCommand cmd = new OracleCommand();
-            cmd.Connection = conn.getConnection();
-            cmd.CommandText = "DeleteCustomer";
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("p_id", OracleDbType.Long).Value = id;
-            cmd.Parameters.Add("p_Action", OracleDbType.Varchar2).Value = "D";
-            cmd.ExecuteNonQuery();
+
+            //GlobalConnection conn = new GlobalConnection();
+            //OracleCommand cmd = new OracleCommand();
+            //cmd.Connection = conn.getConnection();
+            //cmd.CommandText = "DeleteCustomer";
+            //cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.Parameters.Add("p_id", OracleDbType.Long).Value = id;
+            //cmd.Parameters.Add("p_Action", OracleDbType.Varchar2).Value = "D";
+            //cmd.ExecuteNonQuery();
             res[0] = "Deleted";
             return res;
         }
@@ -108,9 +141,9 @@ namespace SampleProject.DAL
 
             string[] res = new string[3];
 
+            SqlCommand cmd=null;
             GlobalConnection conn = new GlobalConnection();
-            OracleCommand cmd = new OracleCommand();
-            cmd.Connection = conn.getConnection();
+            cmd.Connection = GlobalConnection.getConnection();
             //conn.Open();
 
             if (id == 0)

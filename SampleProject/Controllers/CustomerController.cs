@@ -77,7 +77,7 @@ namespace SampleProject.Controllers
             return Json(JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult NewCustomer(int id,string FirstName, string LastName,string Contact, string City, string Country)
+        public ActionResult NewCustomer(int id,string FirstName, string LastName,string Contact, string City, string Country, HttpPostedFileBase file1, HttpPostedFileBase file2)
         {
             
             string[] Result = objCustDAL.SaveRecord(id,FirstName, LastName, Contact, City, Country);
@@ -145,7 +145,7 @@ namespace SampleProject.Controllers
 
             //var temp= filteredItems.Select(m=>m.)
             var displayedCompanies = filteredItems.Skip(param.iDisplayStart).Take(param.iDisplayLength);
-            var result = from c in displayedCompanies select new[] {Convert.ToString(c.id), c.firstName, c.lastName, Convert.ToString(c.phoneNO), Convert.ToString(c.id) };
+            var result = from c in displayedCompanies select new[] {Convert.ToString(c.id), c.firstName, c.lastName, Convert.ToString(c.mobileNo),c.houseNo,c.blockNo,c.lastLoginDate, Convert.ToString(c.id) };
 
 
 

@@ -1,11 +1,18 @@
 ﻿$(document).ready(function () {
+    debugger;
     $("#btnAdd").click(function () {
         var id = $('#id').val();
         var FirstName = $('#TxtFirstName').val();
+        var MiddleName = $('#TxtMiddleName').val();
         var LastName = $('#Txtlastname').val();
         var Contact = $('#Txtcontact').val();
+        var MobileNO = $('#TxtMobileNo').val();
+        var Address = $('#TxtAddress').val();
         var City = $('#Txtcity').val();
         var Country = $('#Txtcountry').val();
+        var fileUpload1 = $("#TxtProof1").get(0);
+        var fileUpload2 = $("#TxtProof2").get(1);
+        
 
         if (FirstName == "") {
             alert("Enter First Name");
