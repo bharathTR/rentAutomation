@@ -32,12 +32,15 @@ body p,h1,h2,h3,h4,h5,h6,a{
 	font-family: 'Roboto', sans-serif;
 }
 
-
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1; /* Firefox */
+}
 
 body { /*--
 	background:pink;
 	*/
-    background: url('../images/bg3.jpg') no-repeat 62% 34%;
+    background: url('../images/bg3.jpeg') no-repeat 62% 34%;
     background-size: cover;
     text-align: center;
 }

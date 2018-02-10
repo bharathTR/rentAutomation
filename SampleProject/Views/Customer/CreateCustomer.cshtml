@@ -88,26 +88,25 @@
                 <div class="form-group col-md-6">
                     <label>Country<span class="text-danger">*</span></label>
                     <div class="controls">
-                        @Html.DropDownListFor(m => m.country, new SelectList(ViewBag.listval, "Value", "Text"), "select", new { id = "TxtCountry", @class = "form-control" })
+                        @Html.DropDownListFor(m => m.country, new SelectList(ViewBag.listCO, "Value", "Text"), "select", new { id = "TxtCountry", @class = "form-control" })
                     </div>
                 </div>
 
                 <div class="form-group col-md-6">
                     <label>State<span class="text-danger">*</span></label>
                     <div class="controls">
-                        @Html.DropDownListFor(m => m.state, new SelectList(ViewBag.listval, "Value", "Text"), "select", new { id = "TxtState", @class = "form-control" })
+                        @Html.DropDownListFor(m => m.state, new SelectList(ViewBag.listST, "Value", "Text"), "select", new { id = "TxtState", @class = "form-control" })
                         <div class="help-block"></div>
                     </div>
                 </div>
 
             </div>
 
-
             <div class="row">
                 <div class="form-group col-md-6">
                     <label>City<span class="text-danger">*</span></label>
                     <div class="controls">
-                        @Html.DropDownListFor(m => m.city, new SelectList(ViewBag.listval, "Value", "Text"), "select", new { id = "TxtCity", @class = "form-control" })
+                        @Html.DropDownListFor(m => m.city, new SelectList(ViewBag.listCi, "Value", "Text"), "select", new { id = "TxtCity", @class = "form-control" })
                         <div class="help-block"></div>
                     </div>
 
@@ -115,7 +114,7 @@
                 <div class="form-group col-md-6">
                     <label>Type Of Proof<span class="text-danger">*</span></label>
                     <div class="controls">
-                        @Html.DropDownListFor(m => m.proofType, new SelectList(ViewBag.listval, "Value", "Text"), "select", new { id = "TxtCity", @class = "form-control" })
+                        @Html.DropDownListFor(m => m.proofType, new SelectList(ViewBag.listCi, "Value", "Text"), "select", new { id = "TxtProofType", @class = "form-control" })
                         <div class="help-block"></div>
                     </div>
 
@@ -123,7 +122,7 @@
             </div>
 
             <div class="row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
                     <label>Proof 1<span class="text-danger">*</span></label>
                     <div class="controls">
                         @Html.TextBoxFor(m => m.Files, new { id = "TxtProof1", type = "file", name = "Files", @class = "form-control" })<br /><br />
@@ -131,10 +130,18 @@
                     </div>
 
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
                     <label>Proof 2 <span class="text-danger">*</span></label>
                     <div class="controls">
                         @Html.TextBoxFor(m => m.Files, new { id = "TxtProof2", type = "file", name = "Files", @class = "form-control" })<br /><br />
+                        <div class="help-block"></div>
+                    </div>
+
+                </div>
+                <div class="form-group col-md-4">
+                    <label><span class="text-danger"></span></label>
+                    <div class="controls">
+                        <input type="button" id="submitbtn" value="Upload" /><br /><br />
                         <div class="help-block"></div>
                     </div>
 

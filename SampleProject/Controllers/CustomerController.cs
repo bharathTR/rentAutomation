@@ -10,10 +10,13 @@ using System.Web.SessionState;
 
 namespace SampleProject.Controllers
 {
-    
+
+
+    [SessionFilter.SessionExpireFilter]
     public class CustomerController : Controller
     {
         // GET: Customer
+        
 
         CustomerDAL  objCustDAL = new CustomerDAL();
         public ActionResult ViewCustomer(CustomerModel obj)
@@ -23,15 +26,53 @@ namespace SampleProject.Controllers
             return View(obj);
         }
 
-
+        [SessionFilter.SessionExpireFilter]
         public ActionResult CreateCustomer()
         {
-            List<SelectListItem> taskStatus = new List<SelectListItem> {
-           new SelectListItem { Text = "New", Value = "0" },
-           new SelectListItem { Text = "InProcess", Value = "1" } };
+            List<SelectListItem> listCountry = new List<SelectListItem>();
+            List<SelectListItem> listStates = new List<SelectListItem>();
+            List<SelectListItem> listCities = new List<SelectListItem>();
+            DataSet ds = new DataSet();
 
-            
-            ViewBag.listval = taskStatus;
+            //ViewBag.listval = taskStatus;
+
+            ds = objCustDAL.getLocation();
+            if (ds.Tables.Count > 0)
+            {
+                foreach (DataRow dR in ds.Tables[0].Rows)
+                {
+                    listCountry.Add(new SelectListItem
+                    {
+                        Text = Convert.ToString(dR["LOCAL_NAME"]),
+                        Value = Convert.ToString(dR["DB_ID"])
+
+                    });
+
+                }
+                foreach (DataRow dR in ds.Tables[1].Rows)
+                {
+                    listStates.Add(new SelectListItem
+                    {
+                        Text = Convert.ToString(dR["LOCAL_NAME"]),
+                        Value = Convert.ToString(dR["DB_ID"])
+
+                    });
+
+                }
+                foreach (DataRow dR in ds.Tables[2].Rows)
+                {
+                    listCities.Add(new SelectListItem
+                    {
+                        Text = Convert.ToString(dR["LOCAL_NAME"]),
+                        Value = Convert.ToString(dR["DB_ID"])
+
+                    });
+
+                }
+                ViewBag.listCO = listCountry;
+                ViewBag.listST = listStates;
+                ViewBag.listCi = listCities;
+            }
 
             int id =Convert.ToInt32(TempData["Userid"]) ;
             CustomerModel objCust = new CustomerModel();
@@ -59,10 +100,10 @@ namespace SampleProject.Controllers
             return View(objCust);
         }
 
-     
 
 
 
+        [SessionFilter.SessionExpireFilter]
         public JsonResult EditCustomerDetails(string id)
         {
             TempData["Userid"] = id;
@@ -71,13 +112,14 @@ namespace SampleProject.Controllers
             return Json(JsonRequestBehavior.AllowGet);
         }
 
+        [SessionFilter.SessionExpireFilter]
         public ActionResult DeleteCustomerDetails(string id)
         {
             string[] confirm = objCustDAL.deleteRecord(id);
             return Json(JsonRequestBehavior.AllowGet);
         }
-
-        public ActionResult NewCustomer(int id,string FirstName, string LastName,string Contact, string City, string Country)
+        [SessionFilter.SessionExpireFilter]
+        public ActionResult NewCustomer(int id,string FirstName, string LastName,string Contact, string City, string Country, HttpPostedFileBase file1, HttpPostedFileBase file2)
         {
             
             string[] Result = objCustDAL.SaveRecord(id,FirstName, LastName, Contact, City, Country);
@@ -94,7 +136,7 @@ namespace SampleProject.Controllers
             
             
         }
-
+        [SessionFilter.SessionExpireFilter]
         public ActionResult getCustomerList(jQueryDataTableParamModel param )
         {
             List<CustomerModel> listdetails = new List<CustomerModel>();
@@ -145,7 +187,7 @@ namespace SampleProject.Controllers
 
             //var temp= filteredItems.Select(m=>m.)
             var displayedCompanies = filteredItems.Skip(param.iDisplayStart).Take(param.iDisplayLength);
-            var result = from c in displayedCompanies select new[] {Convert.ToString(c.id), c.firstName, c.lastName, Convert.ToString(c.phoneNO), Convert.ToString(c.id) };
+            var result = from c in displayedCompanies select new[] {Convert.ToString(c.id), c.firstName, c.lastName, Convert.ToString(c.mobileNo),c.houseNo,c.blockNo,c.lastLoginDate, Convert.ToString(c.id) };
 
 
 

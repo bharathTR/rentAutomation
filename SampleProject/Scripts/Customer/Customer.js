@@ -15,7 +15,10 @@ var url = null;
                 {"sName": "id" },
                 {"sName": "firstname" },
                 {"sName": "lastname" },
-                { "sName": "phone" },
+                { "sName": "mobileNo" },
+                { "sName": "houseNo" },
+                { "sName": "blockNo" },
+                { "sName": "lastLoginDate" },
                 {
                     "sName": "Action",
                     "mRender": function (oObj) {

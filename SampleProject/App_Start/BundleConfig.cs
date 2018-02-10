@@ -72,6 +72,9 @@ namespace SampleProject
                       "~/Scripts/Customer/Customer.js",
                       "~/Scripts/Customer/CustomerCreate.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/Ticket").Include(
+                        "~/Scripts/Ticket/Ticket.js"));
+
             bundles.Add(new StyleBundle("~/bundles/CustomerStyle").Include(
                        "~/Content/Customer/Customer.css"));
 
