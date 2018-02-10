@@ -31,6 +31,29 @@ namespace SampleProject.DAL
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@User", user);
             cmd.Parameters.Add("@pass", pass);
+<<<<<<< HEAD
+=======
+
+            SqlDataAdapter sd = new SqlDataAdapter(cmd);
+            DataTable DS = new DataTable();
+            sd.Fill(DS);
+
+            //GlobalConnection conn = new GlobalConnection();
+            //OracleCommand cmd = new OracleCommand();
+            //cmd.Connection = conn.getConnection();
+            //cmd.CommandText = "CheckUSerExistence";
+            //cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.Transaction = null;
+            //cmd.Parameters.Add("User", OracleDbType.Varchar2).Value = user;
+            //cmd.Parameters.Add("pass", OracleDbType.Varchar2).Value = pass;
+            //cmd.Parameters.Add("p_resultset", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+            //OracleDataAdapter da = new OracleDataAdapter(cmd);
+            //DataSet DS = new DataSet();
+            //da.Fill(DS);
+            // conn.Close();
+            foreach (DataRow dR in DS.Rows)
+            {
+>>>>>>> 134391b1a4dd6d0125334e8aad2f6f86a7809c89
 
             SqlDataAdapter sd = new SqlDataAdapter(cmd);
             DataTable DS = new DataTable();
@@ -64,7 +87,11 @@ namespace SampleProject.DAL
             //GlobalConnection conn = new GlobalConnection();
             //OracleCommand cmd = new OracleCommand();
             //cmd.Connection = conn.getConnection();
+<<<<<<< HEAD
             //status = Check(regLog.userName, regLog.password);
+=======
+            status = Check(regLog.userName, regLog.password);
+>>>>>>> 134391b1a4dd6d0125334e8aad2f6f86a7809c89
             if (status[0] == "1")
             {
                 status[1] = "Exists";

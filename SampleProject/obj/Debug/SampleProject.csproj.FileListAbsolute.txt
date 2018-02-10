@@ -110,7 +110,14 @@ C:\Users\monish\source\repos\SampleProject\rentAutomation\SampleProject\bin\rosl
 C:\Users\monish\source\repos\SampleProject\rentAutomation\SampleProject\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\monish\source\repos\SampleProject\rentAutomation\SampleProject\bin\Oracle.DataAccess.dll
 C:\Users\monish\source\repos\SampleProject\rentAutomation\SampleProject\bin\Oracle.ManagedDataAccess.dll
+<<<<<<< HEAD
 C:\Users\monish\source\repos\SampleProject\rentAutomation\SampleProject\obj\Debug\SampleProject.csproj.CoreCompileInputs.cache
 C:\Users\monish\source\repos\SampleProject\rentAutomation\SampleProject\obj\Debug\SampleProject.dll
 C:\Users\monish\source\repos\SampleProject\rentAutomation\SampleProject\obj\Debug\SampleProject.pdb
 C:\Users\monish\source\repos\SampleProject\rentAutomation\SampleProject\obj\Debug\SampleProject.csprojResolveAssemblyReference.cache
+=======
+C:\Users\monish\source\repos\SampleProject\rentAutomation\SampleProject\obj\Debug\SampleProject.csprojResolveAssemblyReference.cache
+C:\Users\monish\source\repos\SampleProject\rentAutomation\SampleProject\obj\Debug\SampleProject.csproj.CoreCompileInputs.cache
+C:\Users\monish\source\repos\SampleProject\rentAutomation\SampleProject\obj\Debug\SampleProject.dll
+C:\Users\monish\source\repos\SampleProject\rentAutomation\SampleProject\obj\Debug\SampleProject.pdb
+>>>>>>> 134391b1a4dd6d0125334e8aad2f6f86a7809c89

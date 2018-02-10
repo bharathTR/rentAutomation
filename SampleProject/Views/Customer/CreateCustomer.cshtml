@@ -114,7 +114,11 @@
                 <div class="form-group col-md-6">
                     <label>Type Of Proof<span class="text-danger">*</span></label>
                     <div class="controls">
+<<<<<<< HEAD
                         @Html.DropDownListFor(m => m.proofType, new SelectList(ViewBag.listCi, "Value", "Text"), "select", new { id = "TxtProofType", @class = "form-control" })
+=======
+                        @Html.DropDownListFor(m => m.proofType, new SelectList(ViewBag.listval, "Value", "Text"), "select", new { id = "TxtProofType", @class = "form-control" })
+>>>>>>> 134391b1a4dd6d0125334e8aad2f6f86a7809c89
                         <div class="help-block"></div>
                     </div>
 

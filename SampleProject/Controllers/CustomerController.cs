@@ -118,7 +118,11 @@ namespace SampleProject.Controllers
             string[] confirm = objCustDAL.deleteRecord(id);
             return Json(JsonRequestBehavior.AllowGet);
         }
+<<<<<<< HEAD
         [SessionFilter.SessionExpireFilter]
+=======
+
+>>>>>>> 134391b1a4dd6d0125334e8aad2f6f86a7809c89
         public ActionResult NewCustomer(int id,string FirstName, string LastName,string Contact, string City, string Country, HttpPostedFileBase file1, HttpPostedFileBase file2)
         {
             

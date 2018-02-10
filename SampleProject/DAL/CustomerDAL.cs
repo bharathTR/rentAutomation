@@ -18,6 +18,13 @@ namespace SampleProject.DAL
 
         {
             List<CustomerModel> regdetails = new List<CustomerModel>();
+<<<<<<< HEAD
+=======
+            //SqlConnection objcon = new SqlConnection();
+            //objcon.ConnectionString = ConfigurationManager.ConnectionStrings["ConnString"].ToString();
+
+            //objcon.Open();
+>>>>>>> 134391b1a4dd6d0125334e8aad2f6f86a7809c89
             SqlCommand cmd;
             SqlConnection con = GlobalConnection.getConnection();
             DataTable Dt = new DataTable();
